@@ -26,9 +26,18 @@ master.config(menu=menubr)
 
 #portslect frame
 mainfr = ttk.Frame(master, borderwidth=5, relief="sunken", width=1020, height=50)
-mainfr.grid(column=1, row=1, sticky="w,e")
+mainfr.grid(column=1, row=1, sticky="w,e", rowspan=3)
 master.rowconfigure(0, weight=1)
 master.columnconfigure(1, weight=1)
+comptlbl = ttk.Label(master, text="COM Port:",).grid(column=1, row=1, pady=2, padx=4, sticky='W')
+combox = ttk.Combobox(master, textvariable='comvar').grid(column=1, pady=2, padx=4, row=3, sticky='SW')
+#COM Port selection
+
+def select_com():
+    listpts = serial.tools.list_ports.comports()
+    
+    comvar = StringVar(listpts)
+    
 
 
 #gridparameters
